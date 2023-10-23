@@ -1,7 +1,16 @@
 <template>
 
 <div>
-    <h1>Create Customer.......a</h1>
+  <div class="page-wrapper">
+    <div class="page-content">
+
+
+       <h1> create customer</h1>
+
+
+    </div>
+  </div>
+
 </div>
 </template>
 
