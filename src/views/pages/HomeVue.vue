@@ -227,7 +227,20 @@
 					
 
 			</div>
-		</div>
+</div>
 
 </template>
 
+<script>
+export default {
+  name: 'HomeVue', 
+} 
+</script>
+
+<style scoped>
+/* Your component-specific styles here */
+.page-wrapper {
+  color: aliceblue;/* Your styles for the page-wrapper */
+}
+/* Add more styles as needed */
+</style>

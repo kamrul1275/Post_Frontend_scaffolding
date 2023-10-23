@@ -1,13 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import MastarView from '../views/pages/HomeVue.vue'
+// import MastarView from '../views/MastarView.vue'
+import HomeVue from '../views/pages/HomeVue.vue'
 import CreateCustomer from '../views/pages/customer/CreateCustomer.vue'
 import AllCustomer from '../views/pages/customer/AllCustomer.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'MastarView',
-    component: MastarView
+    name: 'HomeVue',
+    component: HomeVue
   },
   {
     path: '/create/customer',
