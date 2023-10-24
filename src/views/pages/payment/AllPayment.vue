@@ -56,7 +56,7 @@
     
     <script>
     export default {
-      name:'CreateCustomer',
+      name:'CreatePayment',
     }
     </script>
     

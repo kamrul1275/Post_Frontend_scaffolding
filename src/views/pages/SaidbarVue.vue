@@ -43,9 +43,9 @@
 						<div class="menu-title">Employee</div>
 					</a>
 					<ul>
-						<li><router-link to="/create/employee"><i class="bx bx-right-arrow-alt"></i>Create Employee </router-link>
+						<li><router-link to="/create/employe"><i class="bx bx-right-arrow-alt"></i>Create Employee </router-link>
 						</li>
-						<li><router-link to="/all/employee"><i class="bx bx-right-arrow-alt"></i>All Employee</router-link>
+						<li><router-link to="/all/employe"><i class="bx bx-right-arrow-alt"></i>All Employee</router-link>
 						</li>
 						
 					</ul>
@@ -74,9 +74,9 @@
 						<div class="menu-title">Product</div>
 					</a>
 					<ul>
-						<li><router-link to="/create/employee"><i class="bx bx-right-arrow-alt"></i>create product</router-link>
+						<li><router-link to="/create/product"><i class="bx bx-right-arrow-alt"></i>create product</router-link>
 						</li>
-						<li><router-link to="/all/employee"><i class="bx bx-right-arrow-alt"></i>all product</router-link>
+						<li><router-link to="/all/product"><i class="bx bx-right-arrow-alt"></i>all product</router-link>
 						</li>
 					</ul>
 				</li>
