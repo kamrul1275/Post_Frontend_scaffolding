@@ -16,14 +16,12 @@
 					</div>
 					<div class="ms-auto">
 						<div class="btn-group">
-							<button type="button" class="btn btn-primary">Settings</button>
-							<button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
-							</button>
-							<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">Action</a>
-								<a class="dropdown-item" href="javascript:;">Another action</a>
-								<a class="dropdown-item" href="javascript:;">Something else here</a>
-								<div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">Separated link</a>
-							</div>
+							
+							<router-link to="/create/customer" class="btn btn-primary"> Create Customer</router-link>
+
+						
+							
+							
 						</div>
 					</div>
 				</div>
@@ -34,33 +32,39 @@
 						<hr/>
 						<div class="card">
 							<div class="card-body">
+							
 								<table class="table mb-0">
 									<thead>
 										<tr>
 											<th scope="col">#</th>
-											<th scope="col">First</th>
-											<th scope="col">Last</th>
+											<th scope="col">First Name</th>
+											<th scope="col">Last Name</th>
+											<th scope="col">Money</th>
 											<th scope="col">Handle</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<th scope="row">1</th>
-											<td>Mark</td>
-											<td>Otto</td>
-											<td>@mdo</td>
+                                   
+								   
+
+										 <tr v-for="customer in customers.data" v-bind:key="customer.id">
+											<th scope="row">{{customer.id  }}</th>
+											<td>{{customer.first_name }}</td>
+											<td>{{customer.last_name }}</td>
+											<td>{{customer.money }}</td>
+
+											<td>
+											
+												<button type="button" class="btn btn-success" @click="edit(customer)"> Edit</button>
+
+                                                <button type="button" class="btn btn-danger" @click="remove(customer)">Delete </button>
+											
+											
+											</td>
+											
+
 										</tr>
-										<tr>
-											<th scope="row">2</th>
-											<td>Jacob</td>
-											<td>Thornton</td>
-											<td>@fat</td>
-										</tr>
-										<tr>
-											<th scope="row">3</th>
-											<td colspan="2">Larry the Bird</td>
-											<td>@twitter</td>
-										</tr>
+										
 									</tbody>
 								</table>
 							</div>
@@ -77,7 +81,122 @@
     
     
     <script>
+	import axios from 'axios';
     export default {
     name:'AllCustomer',
-    }
+
+
+
+
+// start...
+
+data(){
+  return{
+
+
+    customers: {},
+
+    resetForm(){
+   
+      this.customer={
+              id: '',
+              first_name: '',
+			  last_name: '',
+              money: '',
+            
+               }
+
+    },
+
+
+    customer:{
+              id: '',
+			  first_name: '',
+			  last_name: '',
+              money: '',
+            
+               }
+            }
+   
+    },
+
+
+// get product.........
+
+created() {
+        this.CustomerLoad();
+    },
+
+    mounted() {
+          console.log("mounted() called.......");
+      },
+
+    methods: {
+		CustomerLoad()
+            {
+                 var page = "http://127.0.0.1:8000/api/customers";
+                 axios.get(page)
+                  .then(
+                      ({data})=>{
+                        console.log(data);
+                        this.customers = data;
+                      }
+                 );
+              },
+
+
+
+
+// edit part start
+
+edit(customer)
+           {
+			//console.log(customer.id);
+
+            this.customer =  customer;
+          
+           },
+           updateData()
+           {
+              var editrecords = 'http://127.0.0.1:8000/api/customers/'+this.customer.id;
+              axios.put(editrecords, this.customer)
+              .then(
+                ({data})=>{
+                  this.customer.first_name = '';
+				  this.customer.last_name = '';
+                  this.customer.money = '',
+                  this.id = ''
+                  alert("Customer Updated....!!!");
+                  this.CustomerLoad();
+                  console.log(data);
+                  this.resetForm(); // call the resetForm 
+                }
+              );
+ 
+           },
+
+
+
+
+
+
+
+
+
+// delete customer start
+
+remove(customer){
+
+ var url = `http://127.0.0.1:8000/api/customers/${customer.id}`;
+  axios.delete(url);
+  alert("Customer Deleteddd");
+  this.CustomerLoad();
+   }
+
+//end  delete part
+
+			}
+
+
+          }
     </script>
