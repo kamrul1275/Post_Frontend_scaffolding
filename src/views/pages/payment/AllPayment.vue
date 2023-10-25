@@ -153,7 +153,7 @@ created() {
 
 // edit part start
 
-edit(order)
+edit(payment)
            {
 			//console.log(customer.id);
 

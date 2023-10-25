@@ -54,8 +54,9 @@
 											<td>{{customer.money }}</td>
 
 											<td>
+												<router-link to="/all/customer" class="btn btn-success" @click="edit(customer)">Edit</router-link>
 											
-												<button type="button" class="btn btn-success" @click="edit(customer)"> Edit</button>
+												<!-- //<button type="button" class="btn btn-success" @click="edit(customer)"> Edit</button> -->
 
                                                 <button type="button" class="btn btn-danger" @click="remove(customer)">Delete </button>
 											

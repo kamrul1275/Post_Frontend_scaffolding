@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 // import MastarView from '../views/MastarView.vue'
 import HomeVue from '../views/pages/HomeVue.vue'
 import CreateCustomer from '../views/pages/customer/CreateCustomer.vue'
+import EditCustomer from '../views/pages/customer/EditCustomer.vue'
 import AllCustomer from '../views/pages/customer/AllCustomer.vue'
 
 import CreateEmploye from '../views/pages/employe/CreateEmploye.vue'
@@ -32,6 +33,12 @@ const routes = [
     path: '/create/customer',
     name: 'CreateCustomer',
     component: CreateCustomer
+  },
+
+  {
+    path: '/edit/customer',
+    name: 'EditCustomer',
+    component: EditCustomer
   },
 
   {
