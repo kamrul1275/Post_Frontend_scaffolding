@@ -18,13 +18,8 @@
 					<div class="ms-auto">
 						<div class="btn-group">
 							<button type="button" class="btn btn-primary">Settings</button>
-							<button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
-							</button>
-							<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">Action</a>
-								<a class="dropdown-item" href="javascript:;">Another action</a>
-								<a class="dropdown-item" href="javascript:;">Something else here</a>
-								<div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">Separated link</a>
-							</div>
+						
+							
 						</div>
 					</div>
 				</div>
@@ -38,30 +33,26 @@
 								<table class="table mb-0">
 									<thead>
 										<tr>
-											<th scope="col">#</th>
-											<th scope="col">First</th>
-											<th scope="col">Last</th>
-											<th scope="col">Handle</th>
+											<th scope="col">No</th>
+											<th scope="col">Category Name</th>
+											<th scope="col">Details</th>
+											<th scope="col">Action</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<th scope="row">1</th>
-											<td>Mark</td>
-											<td>Otto</td>
-											<td>@mdo</td>
+
+
+										<tr v-for="category in categorys.data" v-bind:key="category.id">
+											<th scope="row">{{category.id  }}</th>
+											<td>{{category.category_name }}</td>
+											<td>{{category.details }}</td>
+											<td>
+												<button type="button" class="btn btn-success" @click="edit(category)"> Edit</button>
+                                                <button type="button" class="btn btn-danger" @click="remove(category)">Delete </button>
+											
+											</td>
 										</tr>
-										<tr>
-											<th scope="row">2</th>
-											<td>Jacob</td>
-											<td>Thornton</td>
-											<td>@fat</td>
-										</tr>
-										<tr>
-											<th scope="row">3</th>
-											<td colspan="2">Larry the Bird</td>
-											<td>@twitter</td>
-										</tr>
+										
 									</tbody>
 								</table>
 							</div>
@@ -79,17 +70,126 @@
     
     
     
+
+    
     <script>
+	import axios from 'axios';
     export default {
-      name:'AllCategory',
-    }
+    name:'AllCategory',
+
+
+
+
+// start...
+
+data(){
+  return{
+
+
+    categorys: {},
+
+    resetForm(){
+   
+      this.category={
+              id: '',
+              category_name: '',
+			  details: '',
+             
+            
+               }
+
+    },
+
+
+    category:{
+		id: '',
+              category_name: '',
+			  details: '',
+             
+            
+            
+               }
+            }
+   
+    },
+
+
+// get product.........
+
+created() {
+        this.CategoryLoad();
+    },
+
+    mounted() {
+          console.log("mounted() called.......");
+      },
+
+    methods: {
+		CategoryLoad()
+            {
+                 var page = "http://127.0.0.1:8000/api/categorys";
+                 axios.get(page)
+                  .then(
+                      ({data})=>{
+                        console.log(data);
+                        this.categorys = data;
+                      }
+                 );
+              },
+
+
+
+
+// edit part start
+
+edit(category)
+           {
+			//console.log(customer.id);
+
+            this.category =  category;
+          
+           },
+           updateData()
+           {
+              var editrecords = 'http://127.0.0.1:8000/api/categorys/'+this.category.id;
+              axios.put(editrecords, this.category)
+              .then(
+                ({data})=>{
+                  this.category.first_name = '';
+				  this.category.last_name = '';
+                  this.category.money = '',
+                  this.id = ''
+                  alert("Customer Updated....!!!");
+                  this.CategoryLoad();
+                  console.log(data);
+                  this.resetForm(); // call the resetForm 
+                }
+              );
+ 
+           },
+
+
+
+
+
+
+
+
+
+// delete customer start
+
+remove(customer){
+
+ var url = `http://127.0.0.1:8000/api/categorys/${customer.id}`;
+  axios.delete(url);
+  alert("Category Deleteddd");
+  this.CategoryLoad();
+   }
+
+//end  delete part
+
+			}
+
+
+          }
     </script>
-    
-    <style scoped>
-    /* Your component-specific styles here */
-    .page-wrapper {
-      color: aliceblue;/* Your styles for the page-wrapper */
-    }
-    /* Add more styles as needed */
-    </style>
-    

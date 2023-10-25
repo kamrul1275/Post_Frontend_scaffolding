@@ -17,31 +17,46 @@
                                             <h5 class="mb-0 text-info">Create Customer</h5>
                                         </div>
                                         <hr/>
+
+
+                                        <form @submit.prevent="save">
+
                                         <div class="row mb-3">
-                                            <label for="inputEnterYourName" class="col-sm-3 col-form-label">First Name</label>
+                                            <label for="inputEnterYourName" class="col-sm-3 col-form-label">order_id</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="inputEnterYourName" placeholder="Enter Your First Name">
+                                                <input type="text" class="form-control" id="order_id" placeholder="Enter Your First Name">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
-                                            <label for="inputPhoneNo2" class="col-sm-3 col-form-label">Last Name</label>
+                                            <label for="inputPhoneNo2" class="col-sm-3 col-form-label">paymatent_date</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="inputPhoneNo2" placeholder="Last Name">
+                                                <input type="text" class="form-control" id="paymatent_date" placeholder="Last Name">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
-                                            <label for="inputEmailAddress2" class="col-sm-3 col-form-label">Money</label>
+                                            <label for="inputEmailAddress2" class="col-sm-3 col-form-label">amount</label>
                                             <div class="col-sm-9">
-                                                <input type="email" class="form-control" id="inputEmailAddress2" placeholder="Email Address">
+                                                <input type="text" class="form-control" id="amount" placeholder="Email Address"> 
                                             </div>
                                         </div>
                         
+
+                                        <div class="row mb-3">
+                                            <label for="inputEmailAddress2" class="col-sm-3 col-form-label">paymentmethod</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="paymentmethod" placeholder="Email Address"> 
+                                            </div>
+                                        </div>
                                         <div class="row">
                                             <label class="col-sm-3 col-form-label"></label>
                                             <div class="col-sm-9">
                                                 <button type="submit" class="btn btn-info px-5">Register</button>
                                             </div>
                                         </div>
+
+                                    </form>
+
+
                                     </div>
                                 </div>
                             </div>
@@ -54,17 +69,101 @@
     
     
     
+
+        
     <script>
+
+    import axios from 'axios';
+    
     export default {
       name:'CreatePayment',
+        
+    // start...
+    
+    data(){
+      return{
+    
+    
+    
+    orders: {},
+    
+        resetForm(){
+       
+          this.payment={
+                 
+                  id: '',
+                  order_id: '',
+                  paymatent_date: '',
+                  amount: '',
+                  paymentmethod: '',
+                
+                
+                
+                   }
+    
+        },
+    
+    
+    payment:{
+                  id: '',
+                  order_id: '',
+                  paymatent_date: '',
+                  amount: '',
+                  paymentmethod: '',
+                
+                }
+                }
+       
+        },
+    
+    
+        
+    
+    
+    // start store
+    methods: {
+    
+    
+    
+    //store
+    
+    save() {
+    
+                console.log(this.payment.order_id + this.payment.paymatent_date + this.payment.amount);
+    
+                if(this.payment.id == '')
+                  {
+                    this.saveData();
+                  }
+                  else
+                  {
+                    this.updateData();
+                  }      
+     
+               },
+               saveData()
+               {
+                axios.post("http://127.0.0.1:8000/api/payments/", this.payment)
+                .then(
+    
+              
+                ()=>{
+                alert("payments successfully added");
+                    //this.CustomerLoad();
+                   
+                    this.resetForm(); // call the resetForm
+                  }
+              
+                )
+     
+               },
+    
+            },
+    // end store 
+    
+    
     }
+    
+    
+    
     </script>
-    
-    <style scoped>
-    /* Your component-specific styles here */
-    .page-wrapper {
-      color: aliceblue;/* Your styles for the page-wrapper */
-    }
-    /* Add more styles as needed */
-    </style>
-    

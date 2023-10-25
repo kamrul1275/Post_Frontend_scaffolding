@@ -48,7 +48,14 @@
 										</div>
 									</div> -->
 
-									<button type="submit" class="btn btn-primary">Submit</button>
+								
+									<div class="row">
+                                            <label class="col-sm-3 col-form-label"></label>
+                                            <div class="col-sm-9">
+                                                <button type="submit" class="btn btn-info px-5">Register</button>
+                                            </div>
+                                        </div>
+
 
 
                                    </form>
@@ -97,8 +104,8 @@ data(){
 
     customer:{
            id: '',
-	 		  first_name: '',
- 		  last_name: '',
+	 	   first_name: '',
+ 		   last_name: '',
            money: '',
             
             }
@@ -133,7 +140,7 @@ save() {
            },
            saveData()
            {
-            axios.post("http://127.0.0.1:8000/api/customers/", this.customer)
+            axios.post("http://127.0.0.1:8000/api/customers/",this.customer)
             .then(
 
           

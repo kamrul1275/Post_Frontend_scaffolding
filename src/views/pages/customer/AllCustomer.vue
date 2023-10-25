@@ -10,7 +10,7 @@
 							<ol class="breadcrumb mb-0 p-0">
 								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">Basic Table</li>
+								<li class="breadcrumb-item active" aria-current="page">Customer Table</li>
 							</ol>
 						</nav>
 					</div>
@@ -36,11 +36,11 @@
 								<table class="table mb-0">
 									<thead>
 										<tr>
-											<th scope="col">#</th>
+											<th scope="col">No</th>
 											<th scope="col">First Name</th>
 											<th scope="col">Last Name</th>
 											<th scope="col">Money</th>
-											<th scope="col">Handle</th>
+											<th scope="col">Action</th>
 										</tr>
 									</thead>
 									<tbody>

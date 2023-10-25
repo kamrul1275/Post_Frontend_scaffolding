@@ -38,30 +38,32 @@
 								<table class="table mb-0">
 									<thead>
 										<tr>
-											<th scope="col">#</th>
-											<th scope="col">First</th>
-											<th scope="col">Last</th>
-											<th scope="col">Handle</th>
+											<th scope="col">No</th>
+											<th scope="col">Product Name</th>
+											<th scope="col">Product Description</th>
+											<th scope="col">Category_id</th>
+											<th scope="col">Paymment Date</th>
+											<th scope="col">Price</th>
+											<th scope="col">Quantity </th>
+										
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<th scope="row">1</th>
-											<td>Mark</td>
-											<td>Otto</td>
-											<td>@mdo</td>
+										<tr v-for="product in products.data" v-bind:key="product.id">
+											<th scope="row">{{product.id  }}</th>
+											<td>{{product.product_name }}</td>
+											<td>{{product.product_description }}</td>
+											<td>{{product.category_id }}</td>
+											<td>{{product.paymatent_date }}</td>
+											<td>{{product.price }}</td>
+											<td>{{product.quantity }}</td>
+											<td>
+												<button type="button" class="btn btn-success" @click="edit(product)"> Edit</button>
+                                                <button type="button" class="btn btn-danger" @click="remove(product)">Delete </button>
+											
+											</td>
 										</tr>
-										<tr>
-											<th scope="row">2</th>
-											<td>Jacob</td>
-											<td>Thornton</td>
-											<td>@fat</td>
-										</tr>
-										<tr>
-											<th scope="row">3</th>
-											<td colspan="2">Larry the Bird</td>
-											<td>@twitter</td>
-										</tr>
+									
 									</tbody>
 								</table>
 							</div>
@@ -79,18 +81,134 @@
 </template>
     
     
+ 
     
+      
     <script>
+	import axios from 'axios';
     export default {
-      name:'AllProduct',
-    }
+    name:'AllProduct',
+
+
+
+
+// start...
+
+data(){
+  return{
+
+
+    products: {},
+
+    resetForm(){
+   
+      this.product={
+		          id: '',
+                  product_name: '',
+                  product_description: '',
+                  category_id: '',
+                  paymatent_date: '',
+                  price: '',
+                  quantity: '',
+             
+            
+               }
+
+    },
+
+
+          product:{
+		          id: '',
+                  product_name: '',
+                  product_description: '',
+                  category_id: '',
+                  paymatent_date: '',
+                  price: '',
+                  quantity: '',
+            
+            
+               }
+            }
+   
+    },
+
+
+// get product.........
+
+created() {
+        this.ProductLoad();
+    },
+
+    mounted() {
+          console.log("mounted() called.......");
+      },
+
+    methods: {
+		ProductLoad()
+            {
+                 var page = "http://127.0.0.1:8000/api/products";
+                 axios.get(page)
+                  .then(
+                      ({data})=>{
+                        console.log(data);
+                        this.products = data;
+                      }
+                 );
+              },
+
+
+
+
+// edit part start
+
+edit(product)
+           {
+			//console.log(customer.id);
+
+            this.product =  product;
+          
+           },
+           updateData()
+           {
+              var editrecords = 'http://127.0.0.1:8000/api/products/'+this.product.id;
+              axios.put(editrecords, this.product)
+              .then(
+                ({data})=>{
+                  this.product.first_name = '';
+				  this.product.last_name = '';
+                  this.product.money = '',
+                  this.id = ''
+                  alert("Customer Updated....!!!");
+                  this.ProductLoad();
+                  console.log(data);
+                  this.resetForm(); // call the resetForm 
+                }
+              );
+ 
+           },
+
+
+
+
+
+
+
+
+
+// delete customer start
+
+remove(product){
+
+ var url = `http://127.0.0.1:8000/api/products/${product.id}`;
+  axios.delete(url);
+  alert("product Deleted...");
+  this.ProductLoad();
+   }
+
+//end  delete part
+
+			}
+
+
+          }
     </script>
-    
-    <style scoped>
-    /* Your component-specific styles here */
-    .page-wrapper {
-      color: aliceblue;/* Your styles for the page-wrapper */
-    }
-    /* Add more styles as needed */
-    </style>
-    
