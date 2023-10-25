@@ -36,7 +36,7 @@ const routes = [
   },
 
   {
-    path: '/edit/customer',
+    path: '/edit/customer/:id',
     name: 'EditCustomer',
     component: EditCustomer
   },

@@ -54,8 +54,7 @@
 											<td>{{customer.money }}</td>
 
 											<td>
-												<router-link to="/all/customer" class="btn btn-success" @click="edit(customer)">Edit</router-link>
-											
+  											<router-link :to="'/edit/customer/' + customer.id" class="btn btn-success">Edit</router-link>											
 												<!-- //<button type="button" class="btn btn-success" @click="edit(customer)"> Edit</button> -->
 
                                                 <button type="button" class="btn btn-danger" @click="remove(customer)">Delete </button>
@@ -150,17 +149,26 @@ created() {
 
 // edit part start
 
-edit(customer)
-           {
-			//console.log(customer.id);
-
-            this.customer =  customer;
+// edit(customer)
+//            {
+			
+// 			var url = `http://127.0.0.1:8000/api/customers/${customer.id}`;
+// 			axios.edit(url);
+// 			alert("Customer edit");
+   
           
-           },
-           updateData()
+//            },
+           
+		 
+		 
+		 
+		 
+		   updateData()
            {
+			console.log("click");
               var editrecords = 'http://127.0.0.1:8000/api/customers/'+this.customer.id;
               axios.put(editrecords, this.customer)
+			  
               .then(
                 ({data})=>{
                   this.customer.first_name = '';
@@ -175,11 +183,6 @@ edit(customer)
               );
  
            },
-
-
-
-
-
 
 
 
