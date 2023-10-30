@@ -50,8 +50,8 @@
 											
 
 											<td>
-									
-												<button type="button" class="btn btn-success" @click="edit(employe)"> Edit</button>
+												<router-link :to="'/edit/employe/' + employe.id" class="btn btn-success">Edit</router-link>
+												<!-- <button type="button" class="btn btn-success" @click="edit(employe)"> Edit</button> -->
                                                 <button type="button" class="btn btn-danger" @click="remove(employe)">Delete </button>
 											
 											</td>

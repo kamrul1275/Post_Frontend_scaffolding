@@ -40,14 +40,15 @@
 										</tr>
 									</thead>
 									<tbody>
-
-
+										
 										<tr v-for="category in categorys.data" v-bind:key="category.id">
 											<th scope="row">{{category.id  }}</th>
 											<td>{{category.category_name }}</td>
 											<td>{{category.details }}</td>
 											<td>
-												<button type="button" class="btn btn-success" @click="edit(category)"> Edit</button>
+												<!-- <button type="button" class="btn btn-success" @click="edit(category)"> Edit</button> -->
+
+												<router-link :to="'/edit/category/' + category.id" class="btn btn-success">Edit</router-link>
                                                 <button type="button" class="btn btn-danger" @click="remove(category)">Delete </button>
 											
 											</td>

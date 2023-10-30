@@ -1,34 +1,62 @@
 import { createRouter, createWebHistory } from 'vue-router'
 // import MastarView from '../views/MastarView.vue'
+
+
+//import LoginVue from '../views/pages/LoginVue.vue'
+
+
+
+
 import HomeVue from '../views/pages/HomeVue.vue'
 import CreateCustomer from '../views/pages/customer/CreateCustomer.vue'
 import EditCustomer from '../views/pages/customer/EditCustomer.vue'
 import AllCustomer from '../views/pages/customer/AllCustomer.vue'
 
 import CreateEmploye from '../views/pages/employe/CreateEmploye.vue'
+import EditEmploye from '../views/pages/employe/EditEmploye.vue'
 import AllEmploye from '../views/pages/employe/AllEmploye.vue'
 
-import CreateCategory from '../views/pages/category/CreateCategory.vue'
-import AllCategory from '../views/pages/category/AllCategory.vue'
+
+import CreateCategory from '../views/pages/category/CreateCategory.vue' 
+
+import EditCategory from '../views/pages/category/EditCategory.vue'
+import AllCategory from '../views/pages/category/AllCategory.vue'   
+
+
 
 import CreateProduct from '../views/pages/product/CreateProduct.vue'
+import EditProduct from '../views/pages/product/EditProduct.vue'
 import AllProduct from '../views/pages/product/AllProduct.vue'  
 
 
 import CreateOrder from '../views/pages/order/CreateOrder.vue' 
+import EditOrder from '../views/pages/order/EditOrder.vue' 
 import AllOrder from '../views/pages/order/AllOrder.vue'
 
-import CreatePayment from '../views/pages/payment/CreatePayment.vue'    
-import AllPayment from '../views/pages/payment/AllPayment.vue'
+import CreatePayment from '../views/pages/payment/CreatePayment.vue'   
+import EditPayment from '../views/pages/payment/EditPayment.vue'   
+import AllPayment from '../views/pages/payment/AllPayment.vue' 
 
 
 
 const routes = [
+  // {
+  //   path: '/',
+  //   name: 'LoginVue',
+  //   component: LoginVue
+  // },
+
+
+
+
   {
     path: '/',
     name: 'HomeVue',
     component: HomeVue
   },
+
+
+
   {
     path: '/create/customer',
     name: 'CreateCustomer',
@@ -56,6 +84,13 @@ const routes = [
     component: CreateEmploye
   },
 
+
+  {
+    path: '/edit/employe/:id',
+    name: 'EditEmploye',
+    component: EditEmploye
+  },
+
   {
     path: '/all/employe',
     name: 'AllEmploye',
@@ -68,6 +103,12 @@ const routes = [
     path: '/create/category',
     name: 'CreateCategory',
     component: CreateCategory
+  },
+
+  {
+    path: '/edit/category/:id',
+    name: 'EditCategory',
+    component: EditCategory
   },
 
   {
@@ -86,6 +127,14 @@ const routes = [
     component: CreateProduct
   },
 
+
+  {
+    path: '/edit/product/:id',
+    name: 'EditProduct',
+    component: EditProduct
+  },
+
+
   {
     path: '/all/product',
     name: 'AllProduct',
@@ -99,6 +148,13 @@ const routes = [
       name: 'CreateOrder',
       component: CreateOrder
     },
+
+    {
+      path: '/edit/order/:id',
+      name: 'EditOrder',
+      component: EditOrder
+    },
+  
   
     {
       path: '/all/order',
@@ -113,6 +169,13 @@ const routes = [
       name: 'CreatePayment',
       component: CreatePayment
     },
+
+    {
+      path: '/edit/payment/:id',
+      name: 'EditPayment',
+      component: EditPayment
+    },
+  
   
     {
       path: '/all/payment',

@@ -15,7 +15,7 @@
                             <div class="card-title d-flex align-items-center">
                                 <div><i class="bx bxs-user me-1 font-22 text-info"></i>
                                 </div>
-                                <h5 class="mb-0 text-info">update Customer</h5>
+                                <h5 class="mb-0 text-info">update Employe</h5>
                             </div>
                             <hr/>
 
@@ -25,22 +25,19 @@
                             <div class="row mb-3">
                                 <label for="inputEnterYourName" class="col-sm-3 col-form-label">First Name</label>
                                 <div class="col-sm-9">
-                                    <input v-model="editedCustomer.first_name" type="text" class="form-control" required id="first_name" />
+                                    <input v-model="employe.first_name" type="text" class="form-control" required id="first_name" />
                                 </div>
                             </div>
+
                             <div class="row mb-3">
                                 <label for="inputPhoneNo2" class="col-sm-3 col-form-label">Last Name</label>
                                 <div class="col-sm-9">
-                                    <input v-model="editedCustomer.last_name" type="text" class="form-control" required id="last_name" />
+                                    <input v-model="employe.last_name" type="text" class="form-control" required id="last_name" />
                                 </div>
                             </div>
-                            <div class="row mb-3">
-                                <label for="inputEmailAddress2" class="col-sm-3 col-form-label">Money</label>
-                                <div class="col-sm-9">
-                                    <input v-model="editedCustomer.money" type="number" class="form-control" required id="money" />
-                                </div>
-                            </div>
-            
+
+                         
+                         
                         
                                 <div class="row">
                                     <label class="col-sm-3 col-form-label"></label>
@@ -68,30 +65,36 @@
 <script>import axios from 'axios';
 
 export default {
-  name: 'EditCustomer',
+  name: 'EditEmploye',
   data() {
     return {
-      editedCustomer: {
-        first_name: '',
-        last_name: '',
-        money: 0,
+        employe: {
+              first_name: '',
+			        last_name: '',
+            
       },
     };
   },
 
+
+  
   created() {
-    const customerId = this.$route.params.id; // Get the customer ID from the route parameter
-    this.loadCustomerData(customerId);
+    const employeId = this.$route.params.id; // Get the customer ID from the route parameter
+    this.loadEmployeData(employeId);
   },
   methods: {
-    loadCustomerData(customerId) {
+    loadEmployeData(employeId) {
 
-      const url = `http://127.0.0.1:8000/api/customers/${customerId}`;
+      console.log(this.employeId);
+
+      //alert('oky');
+
+      const url = `http://127.0.0.1:8000/api/employees/${employeId}/edit`;
       axios.get(url)
         .then((response) => {
           console.log(response.data); // Log the API response data
-          this.editedCustomer = response.data.data[0];
-          console.log(this.editedCustomer[0]); // Log the editedCustomer object
+          this.employe = response.data.data[0];
+          console.log(this.employe[0]); // Log the editedCustomer object
         })
         .catch((error) => {
           console.error(error);
@@ -104,11 +107,11 @@ export default {
 saveChanges() {
   try {
     const editedCustomer =  axios.put(
-      "http://127.0.0.1:8000/api/customers/" + this.editedCustomer.id,
+      "http://127.0.0.1:8000/api/employees/" + this.employeId.id,
       {
         first_name: this.editedCustomer.first_name,
         last_name: this.editedCustomer.last_name,
-        money: this.editedCustomer.money,
+       
       }
     );
 

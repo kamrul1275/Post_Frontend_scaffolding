@@ -57,7 +57,9 @@
 											<td>{{order.total_order }}</td>
 											<td>{{order.order_date }}</td>
 											<td>
-												<button type="button" class="btn btn-success" @click="edit(order)"> Edit</button>
+												<!-- <button type="button" class="btn btn-success" @click="edit(order)"> Edit</button> -->
+
+												<router-link :to="'/edit/order/' + order.id" class="btn btn-success">Edit</router-link>
                                                 <button type="button" class="btn btn-danger" @click="remove(order)">Delete </button>
 											
 											</td>

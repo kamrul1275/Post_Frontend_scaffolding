@@ -18,38 +18,28 @@
                                         </div>
                                         <hr/>
                                    
-									<form @submit.prevent="save">
+                            <form @submit.prevent="save">
 
-<div class="row mb-3">
-    <label for="inputEnterYourName" class="col-sm-3 col-form-label">First Name</label>
-    <div class="col-sm-9">
-        <input type="text" class="form-control"  v-model="employe.first_name" required id="first_name" placeholder="Enter Your First Name">
-    </div>
-</div>
-<div class="row mb-3">
-    <label for="inputPhoneNo2" class="col-sm-3 col-form-label">Last Name</label>
-    <div class="col-sm-9">
-        <input type="text" class="form-control"  v-model="employe.last_name" required id="last_name" placeholder="Last Name">
-    </div>
-</div>
-<div class="row mb-3">
-    <label for="inputEmailAddress2" class="col-sm-3 col-form-label">Birthday</label>
-    <div class="col-sm-9">
-        <input type="text" class="form-control"  v-model="employe.birthday" required id="money" placeholder="money">
-    </div>
-</div>
+                                <div class="row mb-3">
+                                    <label for="inputEnterYourName" class="col-sm-3 col-form-label">First Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control"  v-model="employe.first_name" required id="first_name" placeholder="Enter Your First Name">
+                                    </div>
+                                </div>
 
-<!-- <div class="row">
-    <label class="col-sm-3 col-form-label"></label>
-    <div class="col-sm-9">
-        <button type="submit" class="btn btn-info px-5">Register</button>
-    </div>
-</div> -->
-
-<button type="submit" class="btn btn-primary">Submit</button>
+                                <div class="row mb-3">
+                                    <label for="inputPhoneNo2" class="col-sm-3 col-form-label">Last Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control"  v-model="employe.last_name" required id="last_name" placeholder="Last Name">
+                                    </div>
+                                </div>
 
 
-</form>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+
+                            </form>
+
+
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +76,7 @@ data(){
               id: '',
               first_name: '',
 			  last_name: '',
-              birthday: '',
+             
             
                }
 
@@ -97,7 +87,7 @@ data(){
             id: '',
 	 		first_name: '',
  		    last_name: '',
-            birthday: '',
+           
             
             }
             }
@@ -117,7 +107,7 @@ methods: {
 
 save() {
 
-			console.log(this.employe.first_name + this.employe.first_name + this.employe.birthday);
+			console.log(this.employe.first_name + this.employe.last_name);
 
             if(this.employe.id == '')
               {
@@ -137,7 +127,7 @@ save() {
           
             ()=>{
             alert(" employes successfully added");
-                //this.CustomerLoad();
+                //this.EmployeLoad();
                
                 this.resetForm(); // call the resetForm
               }

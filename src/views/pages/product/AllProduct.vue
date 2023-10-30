@@ -58,7 +58,8 @@
 											<td>{{product.price }}</td>
 											<td>{{product.quantity }}</td>
 											<td>
-												<button type="button" class="btn btn-success" @click="edit(product)"> Edit</button>
+												<!-- <button type="button" class="btn btn-success" @click="edit(product)"> Edit</button> -->
+												<router-link :to="'/edit/product/' + product.id" class="btn btn-success">Edit</router-link>
                                                 <button type="button" class="btn btn-danger" @click="remove(product)">Delete </button>
 											
 											</td>

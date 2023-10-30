@@ -24,19 +24,19 @@
                                         <div class="row mb-3">
                                             <label for="inputEnterYourName" class="col-sm-3 col-form-label">order_id</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="order_id" placeholder="Enter Your First Name">
+                                                <input type="text" class="form-control" v-model="payment.order_id" id="order_id" placeholder="Enter Your First Name">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="inputPhoneNo2" class="col-sm-3 col-form-label">paymatent_date</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="paymatent_date" placeholder="Last Name">
+                                                <input type="text" class="form-control" v-model="payment.paymatent_date" id="paymatent_date" placeholder="Last Name">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label for="inputEmailAddress2" class="col-sm-3 col-form-label">amount</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="amount" placeholder="Email Address"> 
+                                                <input type="text" class="form-control" v-model="payment.amount" id="amount" placeholder="Email Address"> 
                                             </div>
                                         </div>
                         
@@ -44,7 +44,7 @@
                                         <div class="row mb-3">
                                             <label for="inputEmailAddress2" class="col-sm-3 col-form-label">paymentmethod</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="paymentmethod" placeholder="Email Address"> 
+                                                <input type="text" class="form-control" v-model="payment.paymentmethod" id="paymentmethod" placeholder="paymentmethod"> 
                                             </div>
                                         </div>
                                         <div class="row">

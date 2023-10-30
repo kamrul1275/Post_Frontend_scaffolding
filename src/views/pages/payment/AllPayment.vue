@@ -55,7 +55,8 @@
 											<td>{{payment.amount }}</td>
 											<td>{{payment.paymentmethod }}</td>
 											<td>
-												<button type="button" class="btn btn-success" @click="edit(payment)"> Edit</button>
+												<!-- //<button type="button" class="btn btn-success" @click="edit(payment)"> Edit</button> -->
+												<router-link :to="'/edit/payment/' + payment.id" class="btn btn-success">Edit</router-link>
                                                 <button type="button" class="btn btn-danger" @click="remove(payment)">Delete </button>
 											
 											</td>
