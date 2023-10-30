@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
-// import MastarView from '../views/MastarView.vue'
+ import MastarView from '../views/MastarView.vue'
 
 
-//import LoginVue from '../views/pages/LoginVue.vue'
 
+import RegisterVue from '../views/pages/auth/RegisterVue'
+import LoginVue from '../views/pages/auth/LoginVue.vue'
 
 
 
@@ -40,17 +41,24 @@ import AllPayment from '../views/pages/payment/AllPayment.vue'
 
 
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'LoginVue',
-  //   component: LoginVue
-  // },
+  {
+    path: '/',
+    name: 'LoginVue',
+    component: LoginVue
+  },
+
+
+  {
+    path: '/register',
+    name: 'RegisterVue',
+    component: RegisterVue
+  },
 
 
 
 
   {
-    path: '/',
+    path: '/dashboard',
     name: 'HomeVue',
     component: HomeVue
   },

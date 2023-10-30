@@ -16,7 +16,7 @@
 
 				<li>
 					
-						<router-link to="/">
+						<router-link to="/dashboard">
 						<div class="parent-icon"><i class='bx bx-cookie'></i>
 						</div>
 						<div class="menu-title">Dashboard</div>
@@ -116,9 +116,11 @@
 					</a>
 					<ul>
 						
-						<li> <a href="authentication-reset-password.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>Reset Password</a>
+						<li> 
+
+							<!-- //<router-link to="/login" target="_blank" ><i class="bx bx-right-arrow-alt"></i>Login</router-link> -->
 						</li>
-						<li> <a href="authentication-lock-screen.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>Lock Screen</a>
+                 <li> <router-link to="authentication-lock-screen.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>Registration</router-link>
 						</li>
 					</ul>
 				</li>

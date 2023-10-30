@@ -1,5 +1,8 @@
 <template>
 	<div class="wrapper">
+
+		
+
 	  <SaidbarVue></SaidbarVue>
 	  <HeaderVue></HeaderVue>
 	  <router-view></router-view> <!-- Add this line to display routed components -->
@@ -21,7 +24,7 @@ import HeaderVue from './pages/HeaderVue.vue' ;
 export default {
   name: 'MastarView',
   components: {
-    SaidbarVue,HeaderVue
+    SaidbarVue,HeaderVue,
   } 
 }
 </script>
